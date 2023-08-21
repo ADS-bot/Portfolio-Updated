@@ -61,21 +61,22 @@ const sendEmail = (e) => {
 
 contactForm.addEventListener('submit', sendEmail);
 
-/*=============== SHOW SCROLL UP ===============*/ 
-const scrollUp = () =>{
-	const scrollUp = document.getElementById('scroll-up')
+/*=============== SHOW SCROLL UP ===============*/
+const scrollgg = () =>{
+	const scrollGg = document.getElementById('scroll-gg')
     // When the scroll is higher than 350 viewport height, add the show-scroll class to the a tag with the scrollup class
-	this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
-						: scrollUp.classList.remove('show-scroll')
+	this.scrollY >= 350 ? scrollGg.classList.add('show-scrollgg')
+						          : scrollGg.classList.remove('show-scrollgg')
 }
-window.addEventListener('scroll', scrollUp)
+window.addEventListener('scroll', scrollGg)
+
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
 const sections = document.querySelectorAll('section[id]')
     
 const scrollActive = () =>{
-  	const scrollY = window.scrollY
+  	const scrollDown = window.scrollY
 
 	sections.forEach(current =>{
 		const sectionHeight = current.offsetHeight,
@@ -83,7 +84,7 @@ const scrollActive = () =>{
 			  sectionId = current.getAttribute('id'),
 			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
-		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+		if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
 			sectionsClass.classList.add('active-link')
 		}else{
 			sectionsClass.classList.remove('active-link')
@@ -92,8 +93,29 @@ const scrollActive = () =>{
 }
 window.addEventListener('scroll', scrollActive)
 
-
 /*=============== DARK LIGHT THEME ===============*/ 
+  const themeButton = document.getElementById('theme-bu')
+  const darkTheme = 'dark-theme'
+  const iconTheme = 'ri-sun-line'
 
+  const selectedTheme = localStorage.getItem('selected-theme')
+  const selectedIcon = localStorage.getItem('selected-icon')
+
+  const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+  const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
+
+  if (selectedTheme) {
+      document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+      themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+  }
+
+  themeButton.addEventListener('click', () => {
+    console.log('Button clicked')
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+
+      localStorage.setItem('selected-theme', getCurrentTheme())
+      localStorage.setItem('selected-icon', getCurrentIcon())
+  })
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
