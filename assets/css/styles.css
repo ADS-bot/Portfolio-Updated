@@ -97,7 +97,7 @@ img {
   align-items: center;
 }
 
-.change-t{
+.change-theme{
   font-size: 1.25rem;
   cursor: pointer;
   color: var(--title-color);
