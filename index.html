@@ -48,7 +48,18 @@
 
             <div class="nav__buttons">
                   <!--==================== Dark-Light Theme ====================-->
-                       <i class="ri-moon-line change-t" id="theme-bu"></i>
+                       <!-- Theme change button -->
+                       <i class="ri-moon-line change-theme" id="theme-button"></i>
+                       <script>
+                       const toggleButton = document.querySelector('.change-theme');
+                       const body = document.body;
+                       
+                       toggleButton.addEventListener('click', () => {
+                         body.classList.toggle('dark-theme');
+                         toggleButton.classList.toggle('ri-sun-line');
+                         toggleButton.classList.toggle('ri-moon-line');
+                       });
+                       </script>
                      <!--==================== Toggle ====================-->
                      <div class="nav__toggle" id="nav-toggle">
                      <i class="ri-menu-4-line"></i>
