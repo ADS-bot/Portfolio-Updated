@@ -76,7 +76,7 @@ window.addEventListener('scroll', scrollGg)
 const sections = document.querySelectorAll('section[id]')
     
 const scrollActive = () =>{
-  	const scrollDown = window.scrollY
+  	const scrollY = window.scrollY
 
 	sections.forEach(current =>{
 		const sectionHeight = current.offsetHeight,
@@ -84,7 +84,7 @@ const scrollActive = () =>{
 			  sectionId = current.getAttribute('id'),
 			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
-		if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
+		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
 			sectionsClass.classList.add('active-link')
 		}else{
 			sectionsClass.classList.remove('active-link')
@@ -124,3 +124,15 @@ themeButton.addEventListener('click', () => {
 })
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+  origin: 'top',
+  distance: '60px',
+  duration: 2500,
+  delay: 400,
+})
+
+sr.reveal(`.home__perfil, .about__image, .contact__mail`, {origin: 'right'})
+sr.reveal(`.home__name, .home__info,
+           .about__container .section__title-1, .about__info
+           .contact__social, .contact__data`, {origin: 'left'})
+sr.reveal(`,services__card, .projects__card`, {interval: 100})
