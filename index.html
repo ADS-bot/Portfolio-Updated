@@ -142,9 +142,26 @@ Figma.
                      </li>
                   </ul>
                   <div class="about__buttons">
-                     <a href="assets/pdf/Resumeupdated.pdf" target="_blank" class="button button--flex">
+                     <a href="Resumeupdated.pdf" target="_blank" class="button button--flex" onclick="showResumePopup()">
                         Download CV
                         <i class="ri-download-2-line button__icon"></i>
+                        <script>
+                           function showResumePopup() {
+                             Swal.fire({
+                               title: 'Resume Options',
+                               html: '<p>Choose an option to view or download the resume:</p>',
+                               showCancelButton: true,
+                               confirmButtonText: 'Download',
+                               showCloseButton: true,
+                               allowOutsideClick: false,
+                             }).then((result) => {
+                               if (result.isConfirmed) {
+                                 // Download option selected
+                                 window.location.href = "Resumeupdated.pdf";
+                               } 
+                             });
+                           }
+                         </script>
                      </a>
                      <a href="#contact" class="button">
                         <i class="ri-send-plane-line"></i>Contact Me
@@ -460,7 +477,7 @@ you won't receive anything other than your reply.
       </a>
 
       <!--=============== SCROLLREVEAL ===============-->
-      <script src=""></script>
+      <script src="assets/js/scrollreveal.min.js"></script>
       
       <!--=============== EMAIL JS ===============-->
       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
